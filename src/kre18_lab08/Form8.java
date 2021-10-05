@@ -154,17 +154,21 @@ public class Form8 extends javax.swing.JFrame {
         }
         i = 0;
         while (i < jTable1.getRowCount()) {
-            if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) < 0) {
-                y = sin(sum) / Integer.parseInt(jTable1.getValueAt(i, 0).toString());
-                jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
-            }
-            if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) == 0) {
-                y = Math.pow(cos(Math.sqrt(Double.parseDouble(jTable1.getValueAt(i, 0).toString()))), 2);
-                jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
-            }
-            if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) > 0) {
-                y = pr - tan(Integer.parseInt(jTable1.getValueAt(i, 0).toString()));
-                jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
+            try {
+                if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) < 0) {
+                    y = sin(sum) / Integer.parseInt(jTable1.getValueAt(i, 0).toString());
+                    jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
+                }
+                if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) == 0) {
+                    y = Math.pow(cos(Math.sqrt(Double.parseDouble(jTable1.getValueAt(i, 0).toString()))), 2);
+                    jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
+                }
+                if (Integer.parseInt(jTable1.getValueAt(i, 0).toString()) > 0) {
+                    y = pr - tan(Integer.parseInt(jTable1.getValueAt(i, 0).toString()));
+                    jTable1.setValueAt(BigDecimal.valueOf(y).setScale(2, BigDecimal.ROUND_HALF_DOWN).doubleValue(), i, 1);
+                }
+            } catch (Exception e) {
+                jTable1.setValueAt(0, i, 1);
             }
             i++;
         }
